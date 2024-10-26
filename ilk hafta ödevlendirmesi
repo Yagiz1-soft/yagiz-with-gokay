@@ -1,1 +1,101 @@
+VERSİYON KONTROL SİSTEMLERİ 
+Versiyon kontrol sistemleri yazılım projesi veya ofis dosyası gibi dokümanları internet üzerinde bir depoda (repository) saklayabileceğimiz ve üzerinde değişiklik yapabileceğimiz sistemlerdir. 
+Örneğin Git, SVN , Bitkeeper , Mercurial
+VERSİYON KONTROL SİSTEMLERİ FAYDALARI
+1.	Projelerde birden fazla kişinin çalışmasını sağlar.
+2.	Projelerde geliştirme yaparken mevcut duruma nereden gelindiğini anlamak için eski ve yeni kod arasında karşılaştırma yapar.
+3.	Projede hatayla karşılaşıldığında eski koda dönmeyi sağlar.
+4.	Açık kaynaklı projeler baz alınarak geliştirilecek yeni projelerde, süreci kolaylaştırmayı sağlar.
+VERSİYON KONTROL SİSTEMLERİ ÇEŞİTLERİ
+1.LOKAL VERSİYON KONTROL SİSTEMLERİ
+Dosyaların sürüm geçmişini sadece bir geliştiricinin kendi bilgisayarında sakladığı basit bir versiyon kontrol sistemidir. Bu tür sistemler genellikle küçük projeler, kişisel kullanım veya öğrenme amaçları için tercih edilir.
+Basit ve hızlı olması, çevrimdışı çalışma olanağı sağlaması ve bağımsız kullanım gibi avantajlarının yanında işbirliğini zorlaştırması, veri kaybı riski oluşturması ve sınırlı takip ve izleme olanağına sahip olması gibi dezavantajları da vardır.
+Örnek local versiyon kontrol sistemleri; Revision Control System (RCS) ve Source Code Control System (SCCS).
+2.MERKEZİ VERSİYON KONTROL SİSTEMLERİ
+Tüm dosyaların merkezi bir sunucuda saklandığı ve geliştiricilerin bu sunucu üzerinden çalıştığı bir versiyon kontrol sistemidir. 
+Merkezi depoya sahip olması, işbirliği kolaylığı sağlaması, güvenlik ve kontrol imkanları olması ve geçmiş izlemeyi sağlaması gibi avantajlarının yanında bağlantı gereksinimi olması, tek nokta arızası olması, çakışma sorunlarına sebebiyet verebilmesi ve sunucuya sürekli bağımlılık istemesi gibi dezavantajlara sahiptir.
+Örnek merkezi versiyon kontrol sistemleri; Concurrent Versions System (CVS), Apache Subversion (SVN), Helix core (Perforce), Microsoft Team Foundation Server (TFS).
+3.DAĞITIK VERSİYON KONTROL SİSTEMLERİ
+Dosyaların hem merkezi bir sunucuda hem de her kullanıcının kendi bilgisayarında saklandığı ve çalıştığı bir versiyon kontrol sistemidir. Çoklu geliştiricilerle ve esnek çalışma koşullarıyla kullanışlıdır.
+Çalışma bağımsızlığı, hızlı ve etkili dalma ve birleştirme, güçlü geçmiş izleme ve işbirliği kolaylığı gibi avantajlara sahipken öğrenme zorluğu, dağıtık yapıda güvenlik ve izinlere sahip olması, bağlantı gereksinimi ve depo boyutları sıkıntıları gibi dezavantajlara da sahiptir.
+Örnek dağıtık versiyon kontrol sistemleri; Git, Mercurial, Bazaar, BitKeeper, Darcs, Fossil. 
+GİT
+Git versiyon kontrol sistemi oluşturulan projelerde yapılacak değişiklikleri, projenin farklı sürümlerini ayrı ayrı kaydederek hem daha önce oluşturulmuş sürümlere erişim imkanı sağlar hem de projede kaydedilmiş her bir sürümü daha güvenli depolama imkanı oluşturur. Aynı zamanda Git, büyük boyutlu projelerde yapılan tüm değişiklikleri kendi deposunda saklayarak ve kolay erişim imkanı vererek iş takibini daha basit hale getirir. Bu  da Git’in en önemli avantajlarından biridir. Git sistemi bunların yanı sıra ,bilgisayarda bir problem çıkması durumunda kayıp yaşamamak için bellek veya clouds üzerinde dosyaların depolanması gibi kendi uzak depolarına (remote repo) sahiptir. Github ve Gitlab da bu uzak depolardandır. Ayrıca Git birden fazla kişinin aynı proje üzerinde çalışmasına olanak sağlayarak ve farklı kısımlardaki değişiklikleri otomatik olarak birleştirerek iş birliğini de sağlar.
+BAZI GİT KOMUTLARI
+ 
+•	git config –global user.name         “ kullanıcı adı”
+•	git config –global user.email         “eposta adresi”
+
+
+	“git init” komutu proje oluşturmak için kullanılır. Bu komut kullanıldığında bir Git repository’ si oluşur. Daha sonra bu repository uzaktaki bir sunucuya gönderilebilir.
+
+•	C: \Users\User name>mkdir git_project
+•	C: \Users\User name>cd git_project/
+•	C: \Users\User name\git_project>git init 
+ Şeklinde komutlar girildiğinde boş bir repository oluşturulmuş olur.
+	“git status”  projenin anlık durumunu öğrenilmesini sağlar. Komut yardımıyla eklenen ve silinen dosyalar görülebilir.
+
+•	C: \Users\User name\git_project>touch homework
+•	C: \Users\User name\git_project>git status
+On branch master
+No commits yet
+Untracked files
+
+Burda touch komutu ile homework isimli bir repository oluşturulmuş ve projenin anlık durumu listelenmiştir.
+“On branch master” master dalında olduğumuzu,
+”No commits yet” klasör henüz bir değişiklik yapılmadığını ve 
+“Untracked files” dosyanın sistemde henüz bir izi olmadığını gösterir.
+Git sisteminde dosyaların durumları yukarıdaki görseldeki gibi yapılan işlemlere göre değişiklik göstermektedir. Working Directory bulunulan dizini gösterir. “add” komutu ile dosya Staging Area ‘ ya geçer ve git dosyalardaki değişiklikleri izlemeye başlar. Dizinimizin içindeki herşey Local Repository’ de tutulur.
+•	C: \Users\User name\git_project>git add homework
+•	C: \Users\User name\git_project>git status
+On branch master
+No commits yet
+Changes to be committed
+
+new file: homework
+
+Burda “git add” komutu ile homework dosyası Staging Area’ ya taşınmış ve “git status” komutu ile dosyanın durumuna tekrardan bakılmıştır. Ve Git sistemi homework isimli dosyayı tanımıştır.
+GİT KOMUTLARI ÖZETİ
+•	Depo Çekme: git clone [URL]
+•	İlk Depo Oluşturma: git init
+•	Değişiklikleri Ekleme: git add [dosya]
+•	Yerel Depoya Taahhüt: git commit -m "Açıklama"
+•	Uzak Depoya Gönderme: git push
+•	Dal Oluşturma: git branch [dal_adı]
+•	Daldan Ana Dala Birleştirme: git merge [dal_adı] 
+
+
+
+IDE NEDİR
+Integrated Development Environment (IDE) yani türkçe anlamıyla “Entegre Geliştirme Ortamı”, geliştiricilerin daha kolay ve verimli bir şekilde yazılım geliştirmesine yardımcı olan, kodlama hatalarını tespit eden yazılım uygulamalarıdır. Genellikle kod yazma editörleri ile karıştırılsalar da IDE’ler, kod yazma editörlerinden farklı bir yapıya sahiptir.
+
+ 
+
+HTML, CSS, Python, Swift, C, C++, C#, R, Ruby, JavaScript ve Java gibi pek çok programlama dilleri ile çalışabilir. IDE’ler, karmaşık programlama için son derece uygundur. Dile bağlı olarak IDE’ler, şablonlar, sözdizimi vurgulama ve kod katlama içerebilir.
+Bu programlar, web uygulamaları, oyun ve eklenti geliştirmeye yardımcı olur. Otomatik tamamlama, debugging(herhangi bir yazılım kodundaki hataları bulma ve onarma) ve versiyon kontrolü yapabilme özellikleri yazılımcıların üretkenliğini artırır.
+Yazılımcılar geliştirme yaparken yazılımcılar metin editörleri, kitaplık, hata izleme, derleyici ve test platformları gibi araçlar kullanırlar. IDE kullanmayan bir yazılımcının bu araçları ayrı ayrı kullanması gerekir. Bu noktada IDE neden önemlidir sorunu akıllara gelir. IDE’ler tüm bu araçları/teknolojileri birleştirir. Geliştiriciler bunları kullanmak için vakit harcamazlar, işlerini hızlı bir şekilde tamamlayabilirler. 
+
+
+IDE’LERİN ÖZELLİKLERİ
+Metin Düzenleme: IDE’ler, kaynak kodu yazmaya ve işlemeye yardımcı olan bir metin düzenleyici bulundururlar. Ayrıca IDE’ler programlama dillerinin kurallarını bildiğinden kodları otomatik olarak yazabilir ve düzenleyebilirler. 
+
+Yeniden Düzenleme: IDE’ler kodun yeniden düzenlenmesi ve değiştirilmesine olanak tanır. Bu da kodu manuel olarak tek tek değiştirmek yerine hızlıca işi tamamlayıp zamanı verimli kullanmayı sağlar. Geliştiriciler kodları hızlıca istedikleri gibi değiştirirler. 
+Hata Ayıklama: IDE’lerin popüler olmasındaki en büyük etkenlerden biri onun “Hata Ayıklama” özelliğidir. Bu özellik yazılımcıların kaynak kodundaki hataları bulmasını ve düzenlemesine yardımcı olur. Kodun performansın test etmek amacıyla da satır satır test gerçekleştirirler. Yazılımcılar da bu özelliği kullanarak uygulamaları yayınlamadan önce hataları belirler, simüle etmiş olurlar. 
+
+Kod Tamamlama: Kod tamamlama özelliği yazılımcılar kod yazarken kod ifadesini tamamlamak için önerilerde bulunur. Bu özellik, yazılımcıların hızlı ve hata olmadan kod yazmasına yardımcı olur.  
+
+
+
+
+
+EN İYİ IDE’LER HANGİLERİDİR
+•	WebStorm
+•	Syncfusion
+•	NetBeans
+•	AWS Cloud 9
+•	Visual Studio
+•	IntelliJ IDEA
+•	Eclipse
+•	PhpStore
+•	Xcode
 
